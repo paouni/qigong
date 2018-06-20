@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>启动工业4.0</title>
+    <link href="__PUBLIC__/static/index/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/font-awesome.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/prettyPhoto.css" rel="stylesheet"> 
+    <link href="__PUBLIC__/static/index/css/animate.css" rel="stylesheet"> 
+	<link href="__PUBLIC__/static/index/css/presets/preset1.css" rel="stylesheet">
+	<link href="__PUBLIC__/static/index/css/main.css" rel="stylesheet">
+	<link href="__PUBLIC__/static/index/css/responsive.css" rel="stylesheet">
+	<link id="preset" rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/presets/preset1.css">
+
+    <!--[if lt IE 9]>
+	    <script src="__PUBLIC__/static/index/js/html5shiv.js"></script>
+	    <script src="__PUBLIC__/static/index/js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="__PUBLIC__/static/index/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+	
+	<div class="preloader">
+		<div class="preloder-wrap">
+			<div class="preloder-inner">
+			</div>
+		</div>
+	</div>
+	<!--/.preloader-->
+
+	{include file="public/nav"/}
+    <!--/#header-->
+
+    <section id="home">	    
+		<div id="home-carousel" class="carousel slide" data-interval="false">
+		  	<ol class="carousel-indicators">
+				<li data-target="#home-carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#home-carousel" data-slide-to="1"></li>
+				<li data-target="#home-carousel" data-slide-to="2"></li>
+			</ol>
+			<!--/.carousel-indicators-->
+
+		  	<div class="carousel-inner">
+
+				<div class="item active">
+					<!-- <video autoplay loop muted>
+						<source src="http://demo.themeum.com/html/enter/video/video.webm" type="video/webm">
+						<source src="http://demo.themeum.com/html/enter/video/video.mp4" type="video/mp4">
+					</video> -->
+					<div class="carousel-caption">
+						<div>
+							<h2 class="heading animated bounceInRight">启动工业</h2>
+							<h2 class="heading animated bounceInRight">4.0</h2>
+							<a class="btn btn-default btn-transparent animated bounceInUp" href="#">MORE</a>
+						</div>
+					</div>
+			    </div>		  		
+				{volist name="lunbo" id="lv"}
+		  		<div class="item" style="background-image: url({$lv.img_url})">				   
+				    <div class="carousel-caption">
+					    <div>
+							<h2 class="heading animated bounceInRight">启动工业</h2>
+							<h2 class="heading animated bounceInRight">4.0</h2>
+							<a class="btn btn-default btn-transparent animated bounceInUp" href="#">MORE</a>
+					    </div>
+				    </div>
+			    </div>
+				{/volist}
+			    
+			</div>
+			<!--/.carousel-inner-->
+
+			<a class="carousel-left member-carousel-control hidden-xs" href="#home-carousel" data-slide="prev">
+				<i class="fa fa-angle-left"></i>
+			</a>
+			<a class="carousel-right member-carousel-control hidden-xs" href="#home-carousel" data-slide="next">
+				<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+    </section>
+	<!--/#home-->
+
+	<section id="about-us" class="container-fluid">
+		<div class="row">
+			<div class="features">
+				<div class="col-sm-7">
+					<div class="tab-content">
+						<div class="tab-pane active" id="creative">
+							<div id="community-carousel" class="carousel slide" data-ride="carousel">
+							  <!-- Indicators -->
+							  <ul class="carousel-indicators">
+							  	<?php for($i=0;$i<$count;$i++){?>
+								<li data-target="#community-carousel" data-slide-to="<?php echo $i;?>" <?php if($i==0){?>class="active"><?php }?></li>
+								<?php }?>
+								
+							  </ul>
+
+							  <!-- Wrapper for slides -->
+								<div class="carousel-inner">
+									{foreach name="patent" item="pv" key="k"}
+									{if condition="$k eq 0"}
+									<div class="item active" style="background-image: url({$pv.img_url})"></div>
+									{else/}
+									<div class="item" style="background-image: url({$pv.img_url})"></div>
+									{/if}
+									{/foreach}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<ul class="nav features-nav">
+						{foreach name="patent" item="pv" key="k"}						
+						<li <?php if($k == 0){?>class="active"<?php }?> data-target="#community-carousel" data-slide-to="{$k}">
+							<div class="vertical-middle">
+								<div>
+									<div class="media">
+										<div class="pull-left">
+											<i class="fa media-object"></i>
+										</div>							 
+										<div class="media-body media-content">
+											<h3 class="media-heading">{$pv.goods_name}</h3>
+											<p>{$pv.brief2}</p>
+										</div>
+									</div>	
+								</div>
+							</div>				
+						</li>
+						{/foreach}
+					  
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/#about-us-->
+	
+	<section id="services" class="parallax-section">
+		<h2 class="title">技术支持</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="service-items">
+						<div class="services row">
+							{foreach name="support" item="sv"}
+							<div class="col-sm-6">
+								<div class="media service-media">
+									<img src="{$sv.img_url}" class="pull-left" alt="" />
+									<div class="media-body">
+										<h3 class="media-heading">{$sv.goods_name}</h3>
+										<p>{$sv.brief2}</p>
+									</div>
+								</div>	
+							</div>
+							{/foreach}
+
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</section>
+	<!--/#service-->
+    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+
+	<section id="portfolio">
+		<div class="container">
+			<h2 class="title">产品中心</h2>
+			<ul class="portfolio-filter text-center">
+				<li><a class="btn btn-default active" href="#" data-filter="*">全部</a></li>
+				{foreach name="proCate" item="cv"}
+				<li><a class="btn btn-default" href="#" data-filter=".{$cv.title}">{$cv.name}</a></li>
+				{/foreach}
+				<!-- <li><a class="btn btn-default" href="#" data-filter=".web">汽动马达</a></li>
+				<li><a class="btn btn-default" href="#" data-filter=".vimeo">电主轴</a></li>
+				<li><a class="btn btn-default" href="#" data-filter=".youtube">伺服动力头</a></li>
+				<li><a class="btn btn-default" href="#" data-filter=".graphics">打磨工具</a></li> -->
+			</ul><!--/#portfolio-filter-->			
+			<div class="portfolio-items">
+				{foreach name="product" item="pv"}
+				<div class="col-sm-3 portfolio-item {$pv.title}">
+					<div class="view efffect">
+						<div class="portfolio-image">
+							<img class="img-responsive" src="{$pv.img_url}" alt="">
+						</div>	
+					   <div class="mask text-center">
+							<h3>{$pv.goods_name}</h3>
+							<h4>{$pv.brief2}</h4>
+							<a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a>
+							<a href="{$pv.img_url}" data-rel="prettyPhoto"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+				</div>
+				{/foreach}				
+			</div>
+		</div>
+
+		<div id="portfolio-single-wrap">
+			<div id="portfolio-single">
+	    		
+	    	</div>
+    	</div><!-- /# portfolio-single-wrap -->
+    </section>
+    <!--/#portfolio-->
+	
+	<section id="promotion" class="parallax-section"></section>
+	<!--/#promotion-->
+	
+	<section id="our-team">
+		<div class="container">
+			<h2 class="title">企业荣誉</h2>
+			<div id="team-member-carousel" class="carousel slide scale" data-ride="carousel">
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="item active">
+						{foreach name="gloryP" item="gv"}
+						<div class="col-xs-6 col-sm-3">
+							<div class="team-member text-center">
+								<img class="img-responsive" src="{$gv.img_url}" alt="" />
+								<h3>{$gv.goods_name}</h3>
+
+							</div>
+						</div>
+						{/foreach}
+									
+					</div>
+					<div class="item">
+						{foreach name="gloryN" item="gv"}
+						<div class="col-xs-6 col-sm-3">
+							<div class="team-member text-center">
+								<img class="img-responsive" src="{$gv.img_url}" alt="" />
+								<h3>{$gv.goods_name}</h3>
+
+							</div>
+						</div>
+						{/foreach}
+									
+					</div>
+					
+				</div>
+			</div>
+			<!-- Controls -->
+			<a class="carousel-left member-carousel-control hidden-xs" href="#team-member-carousel" data-slide="prev">
+				<i class="fa fa-angle-left"></i>
+			</a>
+			<a class="carousel-right member-carousel-control hidden-xs" href="#team-member-carousel" data-slide="next">
+				<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+	</section>
+	<!--/#our-team-->
+
+  	<section id="testimonial" class="parallax-section">
+
+	</section>
+	<!--/#testimonial-->
+
+	<section id="pricing"> 
+		<div class="container">
+			<div class="row">
+				<h2 class="title">新闻中心</h2>
+				{foreach name="news" item="nv"}
+				<div class="col-sm-3">
+					<ul class="plan text-center">
+						<li class="plan-name"><span>{$nv.goods_name}</span></li>
+						<?php 
+							$date = date('Y-m-d',strtotime($nv['create_time']));
+							$arr=explode('-', $date);
+							$year = $arr[0];
+							$month = $arr[1];
+
+						?>
+						<li class="plan-price"><span><?php echo $year;?></span> <?php echo $month;?>月</li>
+						<li class="plan-content">{$nv.brief2}</li>
+						<li class="get-plan"><a href="" class="btn btn-plan">MORE</a></li>
+					</ul>
+					{if condition="$nv['hot']==1"}
+					<div class="plan-type">
+						<h3>Popular</h3>
+					</div>
+					{/if}
+				</div>
+				{/foreach}
+				
+				
+			</div>
+		</div>
+	</section>
+	<!--/#pricing-->
+
+	<section id="promotion-two" class="parallax-section">
+
+	</section>
+	<!--/#promotion-->
+
+	<section id="blog">
+        <div class="container">
+            <div class="row">
+				<h2 class="title">视频中心</h2>
+				{foreach name="vedio" item="ev"}
+				<div class="col-sm-6">
+					<div class="media single-blog">
+						<div class="pull-left">
+							<img class="img-responsive" src="{$ev.img_url}" alt="" />
+						</div>
+						<div class="media-body blog-content">
+							<h2><a href="#">{$ev.goods_name}</a></h2>
+							<p>{$ev.brief2}</p>
+						</div>
+					</div>
+				</div>
+				{/foreach}
+				
+				
+            </div>
+        </div>
+    </section>
+    <!--/#blog-->
+
+    {include file="public/footer_index"/}
+    <!--/#footer-->
+
+  
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/static/index/js/smoothscroll.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.ba-dotimeout.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/index/js/main.js"></script>  
+</body>
+</html>

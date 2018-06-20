@@ -1,0 +1,104 @@
+{include file="public/header" /}
+
+<div class="crumb_warp">
+    <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+    <i class="fa fa-home"></i> <a href="{:url('admin/index/info')}">首页</a> &raquo; 备份数据库
+</div>
+<!--面包屑导航 结束-->
+
+<!--搜索结果页面 列表 开始-->
+<form action="" method="post" id="form">
+    <div class="result_wrap">
+        <!--快捷导航 开始-->
+        <div class="result_content">
+            <div class="result_title">
+                <h3>栏目管理操作</h3>
+            </div>
+            <div class="short_wrap">
+                <input id="export" type="button" value="立即备份" href="{:url('export')}" />
+                <input id="optimize" type="button" value="优化表" href="{:url('optimize')}" />
+                <input id="repair" type="button" value="修复表" href="{:url('optimize')}" />
+                <!--<a href="{:url('admin/category/add')}"><i class="fa fa-plus"></i>添加栏目</a>-->
+                <!--<a href="{:url('admin/category/index')}"><i class="fa fa-recycle"></i>栏目列表</a>-->
+            </div>
+        </div>
+        <!--快捷导航 结束-->
+    </div>
+
+    <div class="result_wrap">
+        <div class="result_content">
+            <table class="list_tab">
+                <tr class="th_center">
+                    <th width="5%">
+                        <input class="check-all" type="checkbox" value="" checked>
+                    </th>
+                    <th width="10%">表名</th>
+                    <th width="10%">类型</th>
+                    <th width="10%">编码</th>
+                    <th width="15%">记录数</th>
+                    <th width="15%">使用空间</th>
+                    <th width="15%">碎片</th>
+                    <th width="15%">备份状态</th>
+                    <th width="10%">操作</th>
+                </tr>
+
+                {foreach name="list" item="v"}
+                <tr>
+                    <td width="5%" align="center">
+                        <input class="ids" type="checkbox" name="tables[]" value="{$v.name}" checked>
+                    </td>
+                    <td width="10%" align="center">{$v.name}</td>
+                    <td width="10%" align="center">{$v.engine}</td>
+                    <td width="10%" align="center">{$v.collation}</td>
+                    <td width="15%" align="center">{$v.rows}</td>
+                    <td width="15%" align="center">{$v.data_length}</td>
+                    <td width="15%" align="center">{$v.data_free}</td>
+                    <td class="info" align="center">未备份</td>
+                    <td width="15%" align="center">
+                        <a href="">优化</a>  <a href="">修复</a>
+                    </td>
+                </tr>
+                {/foreach}
+            </table>
+        </div>
+    </div>
+</form>
+<!--搜索结果页面 列表 结束-->
+<script>
+$(function () {
+    //导出操作
+    $('#export').click(function () {
+        window.onbeforeunload = function(){ return "正在备份数据库，请不要关闭！" }
+        $(this).parent().children().attr("disabled",'disabled');
+        $(this).val("正在备份,请不要关闭本页面！...");
+        layer.load(); //加载样式
+        $.post($(this).attr("href"), $('#form').serialize(), function(data){
+            layer.closeAll('loading'); //关闭加载
+                if(data.code){
+                    $('#export').val("备份完成，点击重新备份");
+                    layer.msg("备份完成，点击重新备份");
+                } else {
+                    $('#export').val("立即备份");
+                    layer.msg(data.msg);
+                }
+                window.onbeforeunload = function(){ return null }
+                $('#export').parent().children().removeAttr("disabled");
+            }, "json");
+    });
+    //优化修复操作
+    $('#optimize').add($('#repair')).click(function(){
+        $.post($(this).attr('href'), $('#form').serialize(), function(data){
+            if(data.code){
+                //updateAlert(data.msg,'alert-success');
+            } else {
+                //updateAlert(data.msg,'alert-error');
+            }
+            layer.msg(data.msg);
+        }, "json");
+        return false;
+    });
+
+})
+</script>
+
+{include file="public/footer" /}

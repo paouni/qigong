@@ -1,0 +1,111 @@
+{include file="public/header" /}
+
+<div class="crumb_warp">
+    <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+    <i class="fa fa-home"></i> <a href="{:url('admin/index/info')}">首页</a> &raquo; 备份数据库
+</div>
+<!--面包屑导航 结束-->
+
+<!--搜索结果页面 列表 开始-->
+<form action="" method="post" id="form">
+    <div class="result_wrap">
+        <!--快捷导航 开始-->
+        <div class="result_content">
+            <div class="result_title">
+                <h3>数据库备份管理操作</h3>
+            </div>
+            <div class="short_wrap">
+
+            </div>
+        </div>
+        <!--快捷导航 结束-->
+    </div>
+
+    <div class="result_wrap">
+        <div class="result_content">
+            <table class="list_tab">
+                <tr class="th_center">
+                    <th width="20%">备份名称</th>
+                    <th width="10%">卷数</th>
+                    <th width="10%">压缩</th>
+                    <th width="15%">数据大小</th>
+                    <th width="15%">备份时间</th>
+                    <th width="20%">状态</th>
+                    <th width="10%">操作</th>
+                </tr>
+
+                {foreach name="list" item="data"}
+                <tr>
+                    <td>{$data.time|date='Ymd-His',###}</td>
+                    <td>{$data.part}</td>
+                    <td>{$data.compress}</td>
+                    <td>{$data.size|format_bytes}</td>
+                    <td>{$key}</td>
+                    <td>-</td>
+                    <td class="action">
+                        <a class="db-import" href="{:url('import?time='.$data['time'])}">还原</a>&nbsp;
+                        <a href="{:url('download?time='.$data['time'])}">下载</a>&nbsp;
+                        <a class="ajax-get confirm" data-action="{:url('del?time='.$data['time'])}" onclick="deleteAction('{$data['time']}')">删除</a>
+                    </td>
+                </tr>
+                {/foreach}
+            </table>
+        </div>
+    </div>
+</form>
+<!--搜索结果页面 列表 结束-->
+<script>
+    $(".db-import").click(function(){
+        var self = this, code = ".";
+        $.get(self.href, success, "json");
+        window.onbeforeunload = function(){ return "正在还原数据库，请不要关闭！" }
+        return false;
+
+        function success(data){
+            if(data.code){
+                if(data.data.gz){
+                    data.msg += code;
+                    if(code.length === 5){
+                        code = ".";
+                    } else {
+                        code += ".";
+                    }
+                }
+                $(self).parent().prev().text(data.msg);
+                if(data.data.part){
+                    $.get(self.href,
+                        {"part" : data.data.part, "start" : data.data.start},
+                        success,
+                        "json"
+                    );
+                }  else {
+                    window.onbeforeunload = function(){ return null; }
+                }
+                layer.msg(data.msg);
+            } else {
+                layer.msg(data.msg);
+            }
+        }
+    });
+
+    function deleteAction(time) {
+        //询问框
+        layer.confirm('您确定要删除这个备份吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            //发送post请求
+            $.get("{:url('del')}", {_method:'DELETE','_token':'csrf_token',time:time}, function (data) {
+                if(data.code) {
+                    layer.msg('删除成功', {icon: 1});
+                    location.href=location.href;
+                }else {
+                    layer.msg(data.msg, {icon: 2});
+                }
+            },'json');
+        }, function(){
+            //layer.msg('11', {icon: 2});
+        });
+    }
+</script>
+
+{include file="public/footer" /}

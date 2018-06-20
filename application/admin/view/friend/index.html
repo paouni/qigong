@@ -1,0 +1,90 @@
+{extend name="base" /}
+{block name="title"}
+<title>友情链接管理</title>
+{/block}
+{block name="content"}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>系统友情链接管理 </legend> <br>
+    <a href="{:url('admin/friend/add')}" class="layui-btn" target="">添加友情链接</a>
+    <a href="{:url('admin/friend/index')}" class="layui-btn layui-btn-normal" target="">友情链接列表</a>
+</fieldset>
+
+<form action="" method="post">
+    <table class="layui-table">
+        <colgroup>
+            <col width="50">
+            <col width="50">
+            <col width="200">
+            <col width="">
+        </colgroup>
+        <thead>
+        <tr>
+            <th class="tc">排序</th>
+            <th class="tc">ID</th>
+            <th class="tc">友链名称</th>
+            <th class="tc">地址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach name="list" item="v"}
+        <tr>
+            <td class="tc">
+                <div class="layui-anim" style="width: 50px;">
+                    <input type="text" onchange="changeOrder(this, {$v->id});" name="ord[]" value="{$v->sort_order}" class="layui-input">
+                </div>
+            </td>
+            <td class="tc">{$v->id}</td>
+            <td class="tc">{$v->name}</td>
+            <td class="tc">{$v->link}</td>
+            <td>
+                <a href="{:url('/admin/friend/edit', ['id' => $v->id])}" class="layui-btn layui-btn-small layui-btn-normal" title="修改"><i class="layui-icon"></i>修改</a>
+                <a class="layui-btn layui-btn-small layui-btn-danger" onclick="deleteAction('{$v->id}')"><i class="layui-icon"></i>删除</a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+</form>
+{/block}
+
+{block name="js"}
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.min.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','element'], function () {
+        var form = layui.form(), $ = layui.jquery;
+
+        //监听提交
+        form.on('submit(sub)', function (data) {
+            return true;
+        });
+
+    });
+    function changeOrder(obj, id) {
+        var order = $(obj).val();
+        $.post("{:url('admin/common/change_order')}",{'type':'category','id':id,'order':order,'field':'sort_order'}, function (data) {
+            layer.msg(data.msg);
+        },'json')
+    }
+
+    function deleteAction(id) {
+        //询问框
+        layer.confirm('您确定要删除这个栏目吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            //发送post请求
+            $.post("{:url('admin/friend/delete')}", {_method:'DELETE','_token':'csrf_token',id:id}, function (data) {
+                if(data.errno) {
+                    layer.msg(data.msg, {icon: 2});
+                }else {
+                    layer.msg('删除成功', {icon: 1});
+                    location.href=location.href;
+                }
+            },'json');
+        }, function(){
+            //layer.msg('11', {icon: 2});
+        });
+    }
+</script>
+{/block}

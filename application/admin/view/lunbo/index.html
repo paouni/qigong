@@ -1,0 +1,87 @@
+{extend name="base" /}
+{block name="title"}
+<title>轮播列表</title>
+{/block}
+{block name="content"}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>轮播列表 </legend> <br>
+    <a href="{:url('admin/lunbo/add', ['type' => request()->route('type')])}" class="layui-btn">添加轮播</a>
+    <a href="{:url('admin/lunbo/index', ['type' => request()->route('type')])}" class="layui-btn layui-btn-normal" target="">轮播列表</a>
+</fieldset>
+
+<table class="layui-table">
+    <colgroup>
+        <col width="50">
+        <col width="50">
+        <col width="200">
+        <col width="">
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="tc">排序</th>
+        <th class="tc">ID</th>
+        <th>缩略图</th>
+        <th width="20%">描述</th>
+        <th>链接</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {foreach name="list" item="v"}
+    <tr>
+        <td class="tc" width="10px">
+            <div class="layui-anim" style="width: 50px;">
+                <input type="text" onchange="changeOrder(this, {$v->id});" name="ord[]" value="{$v->sort_order}" class="layui-input">
+            </div>
+        </td>
+        <td><a href="###">{$v.id}</a></td>
+        <td>
+            <img src="{$v->img_url}" alt="缩略图" width="500px" height="150px">
+        </td>
+        <td>{$v->tips}</td>
+        <td>{$v->href}</td>
+        <td>
+            <a href="{:url('admin/lunbo/edit', ['id' => $v->id,'type' => $v.type])}" class="layui-btn layui-btn-small layui-btn-normal" title="修改"><i class="layui-icon"></i>修改</a>
+            <a class="layui-btn layui-btn-small layui-btn-danger" onclick="deleteAction('{$v->id}')"><i class="layui-icon"></i>删除</a>
+        </td>
+    </tr>
+    {/foreach}
+    </tbody>
+</table>
+
+{/block}
+
+{block name="js"}
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.min.js"></script>
+<script>
+    layui.use(['layer'], function () {
+
+    });
+    function changeOrder(obj, id) {
+        var order = $(obj).val();
+        $.post("{:url('admin/common/change_order')}",{'type':'lunbo','id':id,'order':order,'field':'sort_order'}, function (data) {
+            layer.msg(data.msg);
+        },'json')
+    }
+
+    function deleteAction(id) {
+        //询问框
+        layer.confirm('您确定要删除这个轮播吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            //发送post请求
+            $.post("{:url('admin/lunbo/delete')}", {_method:'DELETE','_token':'csrf_token',id:id}, function (data) {
+                if(data.errno) {
+                    layer.msg(data.msg, {icon: 2});
+                }else {
+                    layer.msg('删除成功', {icon: 1});
+                    location.href=location.href;
+                }
+            },'json');
+        }, function(){
+            //layer.msg('11', {icon: 2});
+        });
+    }
+</script>
+{/block}

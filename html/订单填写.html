@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <title>同里</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min(1).css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="img/logo.png"/></a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="已付款.html">订单</a></li>
+                    <li><a  data-toggle="modal" data-target="#myModal" href="" >登录</a></li>
+                    <li id="main" style="display: none">
+                        <img src="img/main.png" alt="">
+                        <span>13815604998</span>
+                        <input class="back" value="退出" type="button">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="row" style="padding: 0">
+                <a href="" class="close" data-dismiss="modal" ><img src="img/close.png" alt=""></a>
+                <div class="col-md-8 col-sm-8">
+                    <img src="img/mologo.png" alt="">
+                    <input type="text" placeholder="手机号码">
+                    <input type="text" placeholder="密码">
+                    <p class="spe">
+                        <input  type="text" placeholder="验证码">
+                        <img src="img/yz.jpg" alt="">
+                    </p>
+                    <p class="go-m">
+                        <input type="button" onclick="window.location.href='index.html'" value="登录">
+                        <input type="button" onclick="window.location.href='会员注册.html'" value="注册">
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <img src="img/mologo.png" alt="">
+                    <p>非会员预订</p>
+                    <input type="button" onclick="window.location.href='index.html'" value="非会员登录">
+                </div>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!--订单查询-->
+<div class="resgter">
+    <div class="container">
+        <div class="res-top-title">
+            <p class="pull-left">苏州同里古镇景区成人票联票 提前一天网络预订免预约 可二次入园</p>
+            <p class="pull-right"> <a class="active" href="">尊敬的会员</a> | <a href="">会员中心</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="file hidden-xs">
+            <div class="pull-left fileload fon" ></div>
+            <span class="write pull-left won">填写</span>
+            <div class="pull-left fileload  " ></div>
+            <span class="write pull-left ">完成</span>
+        </div>
+        <div class="f-title" style="clear: left">
+            <p class="topz"><img src="img/true.png" alt="">可免费取消<span>订单提交后，在入住前可随时取消。</span> </p>
+            <p class="botz"><img src="img/pay.png" alt="">在线支付</p>
+        </div>
+    </div>
+    <div class="list-xq t-money t-money-x">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                  <p class="dl-top">联系人信息 <span>为方便携程及时与您联系，请准确填写联系人信息（手机号码Email）</span> </p>
+                  <p class="dl-inp">手机号码<input type="text"><span>*</span></p>
+                  <p class="dl-inp">证件类型 <select name="" >
+                      <option value="">身份证</option>
+                      <option value="">驾驶证</option>
+                      <option value="">市民证</option>
+                      <option value="">房产证</option>
+                  </select><input class="spea" type="text"><span>*</span></p>
+                </div>
+                <div class="col-md-10">
+                    <p class="dl-top">预订信息 <span>为了您能顺利出行，请务必确认出行时间</span> </p>
+                    <p class="dl-inp">出行时间<input  type="date"><span>*</span></p>
+                    <p class="dl-inp">出行人数<input type="text" ><span>*</span></p>
+                    <p class="dl-inp">票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种 <select class="spel" name="">
+                        <option value="">学生票</option>
+                        <option value="">成人票</option>
+                        <option value="">团队票</option>
+                        <option value="">老人票</option>
+                    </select><span>*</span></p>
+                </div>
+                <div class="col-md-10 dl-post">
+                    <a href="支付.html">同意以下条款  去支付</a>
+                </div>
+                <div class="col-md-10">
+                    <p class="ydxz">预定须知</p>
+                   <ul>
+                       <li>1、网络门票请至少提前一天在网络预定购买好,无需另外电话预约;</li>
+                       <li>2、购买的网络门票一旦付款成功则不接受退票退款处理,请确认后购买;如若不确定,可至天猫同里旅游旗舰店咨询在线旺旺客服后购买,</li>
+                       <li>3、游客付款成功后会收到预定短信,到景区售票处的网络窗口报兑换码给工作人员,换取实体票入园;</li>
+                       <li>4、同里古镇门票二日有效操作流程:凡留宿同里,或需第二天继续游玩者,可在第一天换取实体票的时候,出示身份证,并提醒工作人员帮您免费办理过夜手续。第二天继续游玩时带上身份证和门票即可继续自由出入古镇,游玩门票上未参观的景点;</li>
+                       <li>5、出游当天,在景区的四个售票点(镇南、镇东、镇北、中川桥)的网络窗口都可以换取实体票入园;</li>
+                       <li>6、更多详情可咨询天猫同里旅游旗舰店在线旺旺客服;</li>
+                       <li>7、下单过程中，如有疑问拨打0512-63311140进行咨询。</li>
+                   </ul>
+                </div>
+                <div class="col-md-2 col-spe">
+                    <div class="mx">
+                        <p>费用明细</p>
+                        <p>单张票价     <span style="float: right">￥：218</span></p>
+                        <p>票种<span style="float: right">学生票</span></p>
+                        <p>人数<span style="float: right">2人</span></p>
+                        <p class="speil">总额<span style="float: right">￥：218</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--订单查询结束-->
+<!--尾部-->
+<div class="footer">
+    <div class="top">
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">概况</a></li>
+                            <li><a href="">地理</a></li>
+                            <li><a href="">历史</a></li>
+                            <li><a href="">民俗</a></li>
+                            <li><a href="">典故</a></li>
+                            <li><a href="">名人</a></li>
+                            <li><a href="">保护</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">新闻</a></li>
+                            <li><a href="">促销信息</a></li>
+                            <li><a href="">景区动态</a></li>
+                            <li><a href="">专题报道</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">活动</a></li>
+                            <li><a href="">品牌活动</a></li>
+                            <li><a href="">节庆年历</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">印象</a></li>
+                            <li><a href="">照片</a></li>
+                            <li><a href="">视频</a></li>
+                            <li><a href="">美文</a></li>
+                            <li><a href="">屏保下载</a></li>
+                            <li><a href="" >虚拟游</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">攻略</a></li>
+                            <li><a href="">游程推荐</a></li>
+                            <li><a href="">酒店住宿</a></li>
+                            <li><a href="">景点介绍</a></li>
+                            <li><a href="">特色美食</a></li>
+                            <li><a href="">特产购物</a></li>
+                            <li><a href="">休闲娱乐</a></li>
+                            <li><a href="">交通指南</a></li>
+                            <li><a href="">景区地图</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">预定</a></li>
+                            <li><a href="" target="_blank">门票预订</a></li>
+                            <li><a href="" target="_blank">淘宝旗舰店</a></li>
+                            <li><a href="" target="_blank">演出票务预订</a></li>
+                            <li><a href="" target="_blank">客栈预订</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top2">
+        <p><a href="">版权声明</a>  |  <a href="">联系我们</a> | <a href="">友情链接</a> | <a href="">媒体专区</a> | <a href="">常见问题</a></p>
+    </div>
+    <div class="top3">
+        <p class="top">苏州同里国际旅游开发有限公司 版权所有 <a href="#">苏ICP备09047137号</a></p>
+        <p class="top2"><a target="_blank" class="noonmedia" href="http://www.noonmedia.com">正午互动 全案策划</a><br />
+            <img src="img/jingcha.jpg" width="73" />
+        <p class="top3-2" style="height: 25px;width: 100%"></p>
+    </div>
+</div>
+
+<!--尾部结束-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="js/js.js"></script>
+<script>
+    jQuery(".product").slide({ mainCell:".bd ul",effect:"fade",autoPlay:false,trigger:"click",triggerTime:0,delayTime:1500});
+</script>
+</body>
+</html>

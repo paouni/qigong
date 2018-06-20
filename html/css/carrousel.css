@@ -1,0 +1,44 @@
+
+
+
+
+.carrousel-main{
+	position: relative;
+	width:1000px;
+	height:400px;
+}
+.carrousel-main .carrousel-list{
+	width:inherit;
+	height:inherit;
+}
+.carrousel-main .carrousel-list a,.carrousel-main .carrousel-list a img{
+	display: block;
+	width:inherit;
+	height:inherit;
+}
+.carrousel-btn{
+	position: absolute;
+	top:0px;
+	width:100px;
+	height:400px;
+	cursor: pointer;
+	opacity: 0.5;
+	z-index: 10;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+/*左右按钮*/
+.carrousel-btn-pre{
+	left:0px;
+	background-image: url('../img/btn_l.png');
+}
+.carrousel-btn-next{
+	right:0px;
+	background-image: url('../img/btn_r.png');
+}
+/*列表*/
+.carrousel-main .carrousel-list .carrousel-item{
+	position: absolute;
+	top:0px;
+	left: 0px;
+}

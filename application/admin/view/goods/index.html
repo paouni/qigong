@@ -1,0 +1,153 @@
+{extend name="base" /}
+{block name="title"}
+<title>产品管理</title>
+{/block}
+{block name="content"}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>产品管理</legend>
+    <br>
+    <a href="{:url('admin/goods/add')}" class="layui-btn">添加产品</a>
+    <a href="{:url('admin/goods/index')}?is_delete=0" class="layui-btn layui-btn-normal" target="">产品列表</a>
+    <a href="{:url('admin/goods/index')}?is_delete=1" class="layui-btn layui-btn-normal" target="">下架产品列表</a>
+</fieldset>
+
+<form action="" method="post">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th class="tc">排序</th>
+            <th class="tc">ID</th>
+            <th class="tc">产品名称</th>            
+            <th>产品特色</th>
+            <th>产品分类</th>
+            <th>展示位</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach name="list" item="v"}
+        <tr>
+            <td class="tc">
+                <div class="layui-anim" style="width: 50px;">
+                    <input type="text" onchange="changeOrder(this, {$v.id});" name="ord[]" value="{$v.sort_order}" class="layui-input">
+                </div>
+            </td>
+            <td class="tc">{$v.id}</td>
+            <td class="tc">{$v.goods_name}</td>
+            <td class="tc">{$v.brief2}</td>
+            <td class="tc">{$v.category_name}</td>
+            <td class="tc">
+                {switch name="v.place"}
+                    {case value="0"}产品页展示{/case}
+                    {case value="1"}首页展示{/case}
+                    {default /}产品页展示
+                {/switch}
+            </td>
+            <td>
+                <a class="layui-btn {if $v.is_delete == 0}layui-btn-warm{/if} layui-btn-small" onclick="downAction('{$v.id}','{$v.is_delete}')">{if $v.is_delete}上架{else/}下架{/if}</a>
+
+                <a href="{:url('/admin/goods/edit', ['id' => $v.id])}"
+                   class="layui-btn layui-btn-small layui-btn-normal" title="修改"><i class="layui-icon"></i>修改</a>
+                <a class="layui-btn layui-btn-small layui-btn-danger" onclick="deleteAction('{$v.id}')"><i
+                        class="layui-icon"></i>删除</a>
+            </td>
+        </tr>
+        {/foreach}
+        <tr>
+            <td colspan="7">
+                <div id="pages"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+{/block}
+
+{block name="js"}
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.min.js"></script>
+<script>
+   layui.use(['form', 'layedit', 'laydate','element','laypage'], function () {
+        var form = layui.form(), $ = layui.jquery,laypage = layui.laypage;
+        laypage({
+            cont: 'pages'
+            ,curr: '{$page.currentPage}'  //当前页
+            ,pages: '{$page.pageCount}'  //总页数
+            ,skip: true
+            ,jump: function(obj, first){
+            if(!first){
+                //layer.msg('第 '+ obj.curr +' 页');
+                location.href="{:url('goods/index')}?page="+obj.curr;
+            }
+        }
+        });
+        //监听提交
+        form.on('submit(sub)', function (data) {
+            return true;
+        });
+
+    });
+    function changeOrder(obj, id) {
+        var order = $(obj).val();
+        $.post("{:url('admin/common/change_order')}", {
+            'type': 'category',
+            'id': id,
+            'order': order,
+            'field': 'sort_order'
+        }, function (data) {
+            layer.msg(data.msg);
+        }, 'json')
+    }
+    function downAction(id, $is_delete) {
+        if ($is_delete === '1') {
+            var msg = '上'; var del = 0;
+        }else {
+            var msg = '下'; var del = 1;
+        }
+        layer.confirm('您确定要'+msg+'架这个产品吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            //发送post请求
+            $.post("{:url('admin/goods/down')}", {
+                _method: 'DELETE',
+                '_token': 'csrf_token',
+                id: id,
+                is_delete: del
+            }, function (data) {
+                if (data.errno) {
+                    layer.msg(data.msg, {icon: 2});
+                } else {
+                    layer.msg(msg + '架成功', {icon: 1});
+                    location.href = location.href;
+                }
+            }, 'json');
+        }, function () {
+            //layer.msg('11', {icon: 2});
+        });
+    }
+
+    function deleteAction(id) {
+        //询问框
+        layer.confirm('您确定要删除这个产品吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            //发送post请求
+            $.post("{:url('admin/goods/delete')}", {
+                _method: 'DELETE',
+                '_token': 'csrf_token',
+                id: id
+            }, function (data) {
+                if (data.errno) {
+                    layer.msg(data.msg, {icon: 2});
+                } else {
+                    layer.msg('删除成功', {icon: 1});
+                    location.href = location.href;
+                }
+            }, 'json');
+        }, function () {
+            //layer.msg('11', {icon: 2});
+        });
+    }
+</script>
+{/block}

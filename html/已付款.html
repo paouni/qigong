@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <title>同里</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min(1).css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="img/logo.png"/></a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="已付款.html">订单</a></li>
+                    <li><a  data-toggle="modal" data-target="#myModal" href="" >登录</a></li>
+                    <li id="main" style="display: none">
+                        <img src="img/main.png" alt="">
+                        <span>13815604998</span>
+                        <input class="back" value="退出" type="button">
+                    </li>
+                    <!-- 模态框（Modal） -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="row" style="padding: 0">
+                <a href="" class="close" data-dismiss="modal" ><img src="img/close.png" alt=""></a>
+                <div class="col-md-8 col-sm-8">
+                    <img src="img/mologo.png" alt="">
+                    <input type="text" placeholder="手机号码">
+                    <input type="text" placeholder="密码">
+                    <p class="spe">
+                        <input  type="text" placeholder="验证码">
+                        <img src="img/yz.jpg" alt="">
+                    </p>
+                    <p class="go-m">
+                        <input type="button" onclick="window.location.href='index.html'" value="登录">
+                        <input type="button" onclick="window.location.href='会员注册.html'" value="注册">
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <img src="img/mologo.png" alt="">
+                    <p>非会员预订</p>
+                    <input type="button" onclick="window.location.href='index.html'" value="非会员登录">
+                </div>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!--订单详情-->
+<div class="list-xq">
+    <div class="container">
+        <div class="row">
+           <div class="xq-title">订单详情</div>
+            <div class="col-md-5">
+                <a href="未付款.html">待付款</a>
+                <a class="active" href="已付款.html">已付款</a>
+                <a href="订单查询.html">订单查询</a>
+                <a href="订单查询.html">退款查询</a>
+            </div>
+            <div class="col-md-6 hidden-xs">
+             订单日期：<input type="date">~<input type="date">
+                <button class="go-s">搜索</button>
+            </div>
+            <div class="col-md-10">
+                <p class="d-list-xq"><span>2017-05-24</span> 订单编号：<span>2017050241235652</span></p>
+                <div class="col-md-3 col-xs-3 ">
+                    <a href="同里旅游商品.html">
+                    <img src="img/dlist.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-md-8 col-xs-9 ">
+                    <p>苏州同里古镇景区成人票联票 提前一天网络预订免预约 可二次入园</p>
+                    <p class="hidden-xs">人数：<span>1</span>人       出发日期：<span>2017-05-26</span><span class="price" >￥：216</span></p>
+                    <p class="hidden-xs">票种：<span>成人票</span></p>
+                    <div class="p-right" style="text-align: left">
+                        <a class="p-xq" href="订单详情.html">订单详情</a>
+                        <a class="p-tk" href="申请退款.html">取消订单</a>
+                        <a class="p-zf" href="">已支付</a>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-2">-->
+               <!--<div class="mx">-->
+                   <!--<p>费用明细</p>-->
+                   <!--<p>单张票价     <span style="float: right">￥：218</span></p>-->
+                   <!--<p>票种<span style="float: right">学生票</span></p>-->
+                   <!--<p>人数<span style="float: right">2人</span></p>-->
+                   <!--<p class="speil">总额<span style="float: right">￥：218</span></p>-->
+               <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<!--订单详情结束-->
+<!--尾部-->
+<div class="footer">
+    <div class="top">
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">概况</a></li>
+                            <li><a href="">地理</a></li>
+                            <li><a href="">历史</a></li>
+                            <li><a href="">民俗</a></li>
+                            <li><a href="">典故</a></li>
+                            <li><a href="">名人</a></li>
+                            <li><a href="">保护</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">新闻</a></li>
+                            <li><a href="">促销信息</a></li>
+                            <li><a href="">景区动态</a></li>
+                            <li><a href="">专题报道</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">活动</a></li>
+                            <li><a href="">品牌活动</a></li>
+                            <li><a href="">节庆年历</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">印象</a></li>
+                            <li><a href="">照片</a></li>
+                            <li><a href="">视频</a></li>
+                            <li><a href="">美文</a></li>
+                            <li><a href="">屏保下载</a></li>
+                            <li><a href="" >虚拟游</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">攻略</a></li>
+                            <li><a href="">游程推荐</a></li>
+                            <li><a href="">酒店住宿</a></li>
+                            <li><a href="">景点介绍</a></li>
+                            <li><a href="">特色美食</a></li>
+                            <li><a href="">特产购物</a></li>
+                            <li><a href="">休闲娱乐</a></li>
+                            <li><a href="">交通指南</a></li>
+                            <li><a href="">景区地图</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <ul>
+                            <li class="main"  ><a href="">预定</a></li>
+                            <li><a href="" target="_blank">门票预订</a></li>
+                            <li><a href="" target="_blank">淘宝旗舰店</a></li>
+                            <li><a href="" target="_blank">演出票务预订</a></li>
+                            <li><a href="" target="_blank">客栈预订</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top2">
+        <p><a href="">版权声明</a>  |  <a href="">联系我们</a> | <a href="">友情链接</a> | <a href="">媒体专区</a> | <a href="">常见问题</a></p>
+    </div>
+    <div class="top3">
+        <p class="top">苏州同里国际旅游开发有限公司 版权所有 <a href="#">苏ICP备09047137号</a></p>
+        <p class="top2"><a target="_blank" class="noonmedia" href="http://www.noonmedia.com">正午互动 全案策划</a><br />
+            <img src="img/jingcha.jpg" width="73" />
+        <p class="top3-2" style="height: 25px;width: 100%"></p>
+    </div>
+</div>
+
+<!--尾部结束-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="js/js.js"></script>
+<script>
+    jQuery(".product").slide({ mainCell:".bd ul",effect:"fade",autoPlay:false,trigger:"click",triggerTime:0,delayTime:1500});
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <link href="__PUBLIC__/static/index/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_690787_amjvltis7wg66r.css">
+    <link href="__PUBLIC__/static/index/css/prettyPhoto.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/animate.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/presets/preset1.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/main.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/responsive.css" rel="stylesheet">
+    <link id="preset" rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/presets/preset1.css">
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/static/index/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/static/index/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="__PUBLIC__/static/index/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+
+<div class="preloader">
+    <div class="preloder-wrap">
+        <div class="preloder-inner">
+        </div>
+    </div>
+</div>
+<!--/.preloader-->
+
+{include file="public/nav"/}
+<!--/#header-->
+
+<section id="banner">
+    <img class="img-responsive" src="{$banner}">
+</section>
+
+<section id="about-us" class="container-fluid">
+    <div class="row">
+        <div class="features">
+            <div class="col-sm-7">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="creative">
+                        <div id="community-carousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators">
+                                <?php for($i=0;$i<$patentCount;$i++){?>
+                                <li data-target="#community-carousel" data-slide-to="<?php echo $i;?>" <?php if($i==0){?>class="active"><?php }?></li>
+                                <?php }?>
+                            </ul>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                {foreach name="patent" item="pv" key="k"}
+                                    {if condition="$k eq 0"}
+                                    <div class="item active" style="background-image: url({$pv.img_url})"></div>
+                                    {else/}
+                                    <div class="item" style="background-image: url({$pv.img_url})"></div>
+                                    {/if}
+                                {/foreach}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <ul class="nav features-nav">
+                    {foreach name="patent" item="pv" key="k"}
+                    <li class="active" data-target="#community-carousel" data-slide-to="{$k}">
+                        <div class="vertical-middle">
+                            <div>
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <i class="media-object"></i>
+                                    </div>
+                                    <div class="media-body media-content">
+                                        <h3 class="media-heading">{$pv.goods_name}</h3>
+                                        <p>{$pv.brief2}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#about-us-->
+{include file="public/footer"/}
+<!--/#footer-->
+
+
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/smoothscroll.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.parallax.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.ba-dotimeout.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/main.js"></script>
+</body>
+</html>

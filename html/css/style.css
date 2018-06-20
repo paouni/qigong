@@ -1,0 +1,62 @@
+/*首页导航*/
+
+header{position: relative;width: 100%; }
+nav{margin: 0 auto;}
+.navbar-default{background-color: transparent;}
+.navbar{border: 0;background: #F5F4F0}
+.navbar-brand{padding: 0}
+.navbar-brand img{width: 100%;}
+.nav>li{position: relative;}
+.navbar-default .container{padding: 0}
+.navbar-nav{margin-left: 178px}
+.navbar-nav>li>a{line-height: 86px;font-size: 14px;letter-spacing: 3px;}
+.navbar-default .navbar-nav>li>a{color: #333;font-size: 15px;}
+.navbar-default .navbar-nav>li{position: relative;border-left:1px solid #C6BCB1;border-right:1px solid  #C6BCB1; }
+.navbar-default .navbar-nav>li:first-child{border-right: 0}
+.navbar-default .navbar-nav>li:last-child{border-left: 0}
+.navbar-default .navbar-nav>li>a:hover{;color: #613C26}
+.navbar-nav>li> a:before{display: inline-block; width: 0;height: 0;content: "";border: 7px solid transparent;border-bottom: 14px solid #613C26;opacity: 0;position: absolute;left: 50%;bottom: 0;transform: translateX(-50%);transition: all .3s}
+.navbar-nav>li> a:after{position: absolute;left: 50%;right: 50%;height: 3px;background: #613C26;transition: all .3s;content: "";bottom: 0;}
+.navbar-nav>li:hover a:after{left: 0;right: 0;}
+.navbar-nav>li:hover a:before{opacity: 1}
+.dropdown-menu {width: calc(100% - 30px);left: 15px}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{color: #333;background: white}
+.navbar-brand img{width: 290px;margin-top: 5px}
+.nav>li>a{padding:0 62px;}
+
+
+@media screen and (max-width: 1199px) {
+	.navbar-nav{margin-left: 108px}
+	.navbar-nav > li > a{padding:0 32px;}
+}
+/*1000以下*/
+@media screen and (max-width: 1000px) {
+
+}
+
+/*767以下*/
+@media screen and (max-width: 767px) {
+	.navbar-brand img{width: 215px;margin-top: 0}
+	.navbar-default .navbar-collapse{background-color: #f3f3f3;}
+	.navbar-default .navbar-nav{;margin-left: 0}
+	.navbar-default .navbar-nav > li{border: none}
+	.navbar-default .navbar-nav > li > a{color: #5a5a5a;line-height: 25px;font-size: 16px;padding: 15px}
+	.navbar-default .navbar-nav > li > a:hover{color: black;}
+	.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{color: black;}
+	.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{color: black;}
+	.navbar-nav>li> a:after{display: none}
+	.navbar-nav>li> a:before{display: none}
+}
+/*723px以下*/
+@media screen and (max-width: 723px) {
+	.navbar-brand{padding: 18px 15px;}
+	.navbar{padding: 0 15px}
+}
+
+
+
+
+
+
+
+

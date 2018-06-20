@@ -1,0 +1,48 @@
+<section id="contact-area" class="clearfix">
+        <div id="contact">
+            <div class="status alert alert-success" style="display: none"></div>
+            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" required placeholder="姓名">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" required placeholder="邮箱">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" class="form-control" required placeholder="标题">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" id="message" required class="form-control" rows="8" placeholder="输入文本内容"></textarea>
+                </div>                        
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">发送</button>
+                </div>
+            </form>
+            <div class="social-icons">
+                <a href=""><i class="fa fa-qq fa-4x"></i></a>
+                <a href=""><i class="fa fa-comment fa-4x"></i></a>
+                <a href=""><i class="fa fa-podcast fa-4x"></i></a>
+
+            </div>
+        </div>
+        <div id="gmap-wrap">
+            <iframe style="width: 85%;height: 444px;margin-top: 15%;" src="{:url('contact/map')}" frameborder="0"></iframe>
+            <p>地址：江苏省苏州市永和路3号</p>
+            <p>邮箱：6534354534534@163.com</p>
+            <p>电话：12345678910</p>
+        </div>
+     </section> 
+    <!--/#contact-area-->
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                   <p>Copyright  ©2018<a target="_blank" href="#"></a> </p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="pull-right"> 技术支持<a target="_blank" href="#">huachen</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>

@@ -1,0 +1,42 @@
+{extend name="base" /}
+{block name="title"}
+<title>用户管理</title>
+{/block}
+{block name="content"}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>用户管理</legend>
+    <br>
+    <a href="{:url('admin/user/index')}?is_delete=0" class="layui-btn layui-btn-normal" target="">用户列表</a>
+</fieldset>
+
+<form action="" method="post">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th class="tc">ID</th>
+            <th class="tc">姓名</th>
+            <th class="tc">邮箱</th>
+            <th>主题</th>
+            <th>留言</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach name="list" item="v"}
+        <tr>
+            
+            <td class="tc">{$v.id}</td>
+            <td class="tc">{$v.user_name}</td>
+            <td class="tc">{$v.email}</td>
+            <td>{$v.title}</td>
+            <td>
+                {$v.message}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+</form>
+
+{/block}
+

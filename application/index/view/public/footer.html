@@ -1,0 +1,50 @@
+<section id="contact-us">
+    <div class="contact-bg">
+        <h2>联系我们</h2>
+        <div class="container">
+            <div class="row phone">
+                <div class="col-sm-6 phone1">
+                    <p><i class="iconfont icon-dianhua"></i><span>电话</span>12345678901</p>
+                </div>
+                <div class="col-sm-6 phone2">
+                    <p><i class="iconfont icon-dianhua"></i><span>电话</span>12345678901</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <ul class="clearfix">
+                    <li><a href="{:url('index/index')}">首页</a></li>
+                    {volist name="nav" id="vo"}
+                    <li><a href="__ROOT__/index.php/index/{$vo.fore_url}">{$v.name}</a></li>
+                    {/volist}
+                    
+                </ul>
+            </div>
+
+            <div class="row contact-bottom">
+                <div class="adress col-sm-6">
+                    <p class="location"><i class="iconfont icon-dizhi"></i>江苏省苏州市高新区永和路3号</p>
+                    <p class="email"><i class="iconfont icon-youxiang1"></i>rock.gao@ind-on.com</p>
+                </div>
+                <div class="qrcod col-sm-6">
+                    <i></i>
+                    <i></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Copyright ©2018<a target="_blank" href="#"></a></p>
+            </div>
+            <div class="col-sm-6">
+                <p class="pull-right"> 技术支持<a target="_blank" href="#">huachen</a></p>
+            </div>
+        </div>
+    </div>
+</footer>

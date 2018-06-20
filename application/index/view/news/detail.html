@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <link href="__PUBLIC__/static/index/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_690787_amjvltis7wg66r.css">
+    <link href="__PUBLIC__/static/index/css/prettyPhoto.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/animate.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/presets/preset1.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/main.css" rel="stylesheet">
+    <link href="__PUBLIC__/static/index/css/responsive.css" rel="stylesheet">
+    <link id="preset" rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/presets/preset1.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/product.css">
+
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/static/index/js/html5shiv.js"></script>
+    <script src="__PUBLIC__/static/index/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="__PUBLIC__/static/index/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="__PUBLIC__/static/index/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+
+<div class="preloader">
+    <div class="preloder-wrap">
+        <div class="preloder-inner">
+        </div>
+    </div>
+</div>
+<!--/.preloader-->
+
+{include file="public/nav"/}
+<!--/#header-->
+
+<section id="banner" class="news-banner">
+    <img class="img-responsive" src="__PUBLIC__/static/index/images/videos.jpg">
+</section>
+
+<section id="news">
+    <div class="column">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        <a href="{:url('index/index')}">首页</a><i class="fa fa-angle-right"></i>新闻中心
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container news-article">
+        <div class="row">
+            <div class="col-md-12 article">
+                <div class="article-title">
+                    <h1 class="text-center">{$detail.goods_name}</h1>
+                </div>
+                <div class="article-content">
+                    <img class="img-responsive" src="{$detail.img_url}">
+                    <p>{$detail.goods_desc}</p>
+                    <a class="btn btn-danger" href="javascript:window.history.go(-1)" role="button">返回</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{include file="public/footer"/}
+<!--/#footer-->
+
+
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/smoothscroll.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.parallax.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/jquery.ba-dotimeout.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/index/js/main.js"></script>
+</body>
+</html>
